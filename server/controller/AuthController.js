@@ -108,24 +108,28 @@ exports.resetPasswordRequest = async (req, res) => {
   const user = await User.findOne({ email: email });
   if (user) {
     const token = crypto.randomBytes(48).toString('hex');
-    user.resetPasswordToken = token;
-    await user.save();
+    // user.resetPasswordToken = token;
+    // await user.save();
 
     // Also set token in email
     const resetPageLink =
-      'http://localhost:3000/reset-password?token=' + token + '&email=' + email;
+      'http://localhost:3000/resetPassword?token=' + token + '&email=' + email;
     const subject = 'reset password for e-commerce';
     const html = `<p>Click <a href='${resetPageLink}'>here</a> to Reset Password</p>`;
 
     // lets send email and a token in the mail body so we can verify that user has clicked right link
 
     if (email) {
+      console.log('---00 email',email)
       const response = await sendMail({ to: email, subject, html });
+      console.log('---11 response',response)
       res.json(response);
     } else {
+      console.log('---22 response',response)
       res.sendStatus(400);
     }
   } else {
+    console.log('---33 response',response)
     res.sendStatus(400);
   }
 };

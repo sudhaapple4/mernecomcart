@@ -1,13 +1,23 @@
 const passport = require('passport');
 const nodemailer = require('nodemailer');
-let transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
-  secure: false, // true for 465, false for other ports
+// let transporter = nodemailer.createTransport({
+//   host: "smtp.gmail.com",
+//   port: 465,
+//   secure: true, // true for 465, false for other ports
+//   auth: {
+//     user: 'sudha.apple4@gmail.com', // gmail
+//     pass: process.env.MAIL_PASSWORD, // pass
+//   },
+// });
+
+const transporter = nodemailer.createTransport({
+  service:'gmail',
+  // port: 465,
+  // secure: true,
   auth: {
-    user: 'sudha.apple4@gmail.com', // gmail
-    pass: process.env.MAIL_PASSWORD, // pass
-  },
+        user: process.env.MAIL,
+        pass: process.env.MAIL_PASSWORD
+      }
 });
 
 

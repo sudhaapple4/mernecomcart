@@ -9,6 +9,6 @@ router.post('/signup', createUser)
 .get('/check',passport.authenticate('jwt'), checkAuth)
 // .get('/check',checkAuth)
 .get('/logout', logout)
-.post('/reset-password-request', resetPasswordRequest)
-.post('/reset-password', resetPassword)
+.post('/resetPasswordRequest', resetPasswordRequest)
+.post('/resetPassword', resetPassword)
 exports.router = router;
