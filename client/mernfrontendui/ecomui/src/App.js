@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { checkAuthAsync, selectLoggedInUser } from './features/auth/authSlice';
 import { Protected } from './features/auth/Protected';
 import SignUp from './features/auth/components/Signup';
+import ForgotPasswordPage from './pages/ForgotPasswordPage';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -25,7 +26,11 @@ const router = createBrowserRouter([
   {
     path: '/signup',
     element: <SignUp/>
-  }
+  },
+  {
+    path: '/forgotPassword',
+    element: <ForgotPasswordPage></ForgotPasswordPage>,
+  },
 ])
 
 function App() {
@@ -37,7 +42,7 @@ function App() {
     // console.log('after')
   },[user])
   return (
-    <div className="App">
+    <div className="bg:gray-100">
       <RouterProvider router={router}/>
     </div>
   );

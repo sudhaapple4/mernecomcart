@@ -6,7 +6,7 @@ import ProductList from '../features/product/components/ProductList'
 const Home = () => {
     // const ProductLists= useCallback(ProductList,[])
   return (
-    <div>
+    <div className='bg-gray-100'>
         <Navbar>
             <ProductList/>
         </Navbar>

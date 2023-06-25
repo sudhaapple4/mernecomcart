@@ -75,7 +75,7 @@ export function createProduct(product) {
   
   export function fetchBrands(token) {
     return new Promise(async (resolve) => {
-      const response = await fetch('/brand',{headers:{Authorization: `Bearer ${token}`}});
+      const response = await fetch('/brand',{headers: {Authorization: `Bearer ${token}`}});
       const data = await response.json();
       resolve({ data });
     });

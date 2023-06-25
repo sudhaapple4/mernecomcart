@@ -65,3 +65,47 @@ export function loginUser(loginInfo) {
     )
   }
   
+  export function resetPasswordRequest(email) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const response = await fetch('/auth/resetPasswordRequest', {
+          method: 'POST',
+          body: JSON.stringify({email}),
+          headers: { 'content-type': 'application/json' },
+        });
+        if (response.ok) {
+          const data = await response.json();
+          resolve({ data });
+        } else {
+          const error = await response.text();
+          reject(error);
+        }
+      } catch (error) {
+        reject( error );
+      }
+  
+    });
+  }
+  
+  export function resetPassword(data) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const response = await fetch('/auth/resetPassword', {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: { 'content-type': 'application/json' },
+        });
+        if (response.ok) {
+          const data = await response.json();
+          resolve({ data });
+        } else {
+          const error = await response.text();
+          reject(error);
+        }
+      } catch (error) {
+        reject( error );
+      }
+  
+    });
+  }
+  
